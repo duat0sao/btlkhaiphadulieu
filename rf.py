@@ -40,11 +40,12 @@ menu2 = menu.loc[:, ['t1Dragons','t2Dragons','t1Rift','t2Rift','topGoldDiff','jg
 x_train,x_test,y_train,y_test=train_test_split(menu2,menu1,test_size=0.20,random_state=130,stratify=menu1)
 
 
-print('SVM')
-model=svm.SVC(probability=True)
-print('Model is training..............')
-model.fit(x_train,y_train)
-print('Done!!!\n')
+print('random forest')
+
+clf=RandomForestClassifier(n_estimators=100)
+clf.fit(x_train,y_train)
+
+print('Done...')
 
 
 
@@ -53,31 +54,13 @@ print('Done!!!\n')
 
 
 
-
-y_predsvm=model.predict(x_test)
 
 #print("Kết quả dự đoán :")
 #print(y_pred)
 #print("Kết quả thực tế:")
 #print(np.array(y_test))
-cxptsvm = accuracy_score(y_predsvm,y_test)*100
-
-print(f"Độ chính xác: {accuracy_score(y_predsvm,y_test)*100}% ")
 
 
-
-
-#print(gg)
-#print(ff)
-
-l = [[1,0,1,0,4981,3913,131,-83,226]]
-gg = model.predict(l)[0]
-
-print('svm')
-if gg==100:
-    print('doi xanh thang')
-else:
-    print('doi do thang')
 
 
 
@@ -143,7 +126,7 @@ canvas1.create_window(230, 250, window=entry9)
 
 
 
-def dudoansvm ():  
+def dudoanrd ():  
     if entry1.get() == '':
         x1 = 0
     else:
@@ -185,9 +168,9 @@ def dudoansvm ():
 
     l1 = [[x1,x2,x3,x4,x5,x6,x7,x8,x9]]
     
-    gg = model.predict(l1)[0]
+    gg = clf.predict(l1)[0]
 
-    print('svm')
+    print('RandomForestClassifier')
     if gg==100:
         label1 = tk.Label(root, text='Đội xanh thắng')
         print('doi xanh thang')
@@ -197,7 +180,7 @@ def dudoansvm ():
     
     canvas1.create_window(310, 290, window=label1)
     
-button1 = tk.Button(text='Dự đoán team thắng', command=dudoansvm)
+button1 = tk.Button(text='Dự đoán team thắng', command=dudoanrd)
 canvas1.create_window(200, 290, window=button1)
 
 root.mainloop()
