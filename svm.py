@@ -18,7 +18,7 @@ from PIL import ImageTk, Image
 
 
 
-menu = pd.read_csv("archive/matches_800full.csv")
+menu = pd.read_csv("data/matches_800full.csv")
 
 
 #print(menu)

@@ -11,14 +11,13 @@ from tkinter import filedialog
 from sklearn import svm
 from sklearn.metrics import accuracy_score
 from tkinter import messagebox
-from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.utils import check_array
 import time
 
 
 
-menu = pd.read_csv("archive/matches_800full.csv")
+menu = pd.read_csv("data/matches_800full.csv")
 
 
 #print(menu)

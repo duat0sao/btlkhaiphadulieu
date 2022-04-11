@@ -21,7 +21,7 @@ from sklearn.utils import check_array
 
 
 
-menu = pd.read_csv("archive/matches_800full.csv")
+menu = pd.read_csv("data/matches_800full.csv")
 
 
 #print(menu)
