@@ -1,10 +1,7 @@
 from cProfile import label
-from email import message
 from importlib.metadata import entry_points
 import pandas as pd
 import os
-from skimage.transform import resize
-from skimage.io import imread
 import numpy as np
 import matplotlib.pyplot as plt
 from tkinter import *
@@ -12,10 +9,12 @@ import tkinter
 from sklearn.model_selection import train_test_split
 from tkinter import filedialog
 from sklearn import svm
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from tkinter import messagebox
-from PIL import ImageTk, Image
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn.utils import check_array
+import time
 
 
 
@@ -41,20 +40,37 @@ menu2 = menu.loc[:, ['t1Dragons','t2Dragons','t1Rift','t2Rift','topGoldDiff','jg
 x_train,x_test,y_train,y_test=train_test_split(menu2,menu1,test_size=0.20,random_state=130,stratify=menu1)
 
 
+start_time1 = time.time()
+
 print('SVM')
 model=svm.SVC(probability=True)
 print('Model is training..............')
 model.fit(x_train,y_train)
 print('Done!!!\n')
 
+end_time1 = time.time()
 
-print('SVM')
-clf=RandomForestClassifier(n_estimators=100)
+
+start_time2 = time.time()
+
+print('LogisticRegression')
+clf=LogisticRegression()
 clf.fit(x_train,y_train)
 print('Done!!!\n')
 
+end_time2 = time.time()
 
 
+
+
+
+
+
+elapsed_time1 = end_time1 - start_time1
+print ("Thời gian chạy SVM:{0}".format(elapsed_time1) + "[sec]")
+
+elapsed_time2 = end_time2 - start_time2
+print ("Thời gian chạy LR:{0}".format(elapsed_time2) + "[sec]")
 
 
 
@@ -68,7 +84,7 @@ y_predrd=clf.predict(x_test)
 cxptsvm = accuracy_score(y_predsvm,y_test)*100
 cxptrd = accuracy_score(y_predrd,y_test)*100
 print(f"Độ chính xác svm: {accuracy_score(y_predsvm,y_test)*100}% ")
-print(f"Độ chính xác rd: {accuracy_score(y_predrd,y_test)*100}% ")
+print(f"Độ chính xác lr: {accuracy_score(y_predrd,y_test)*100}% ")
 
 
 
@@ -189,27 +205,27 @@ def dudoansvm ():
     gg = model.predict(l1)[0]
     ff = clf.predict(l1)[0]
 
-    print('svm')
+    #print('svm')
     if gg==100:
         label1 = tk.Label(root, text='Đội xanh thắng')
-        print('doi xanh thang')
+        #print('doi xanh thang')
     else:
         label1 = tk.Label(root, text='Đội   đỏ thắng')
-        print('doi do thang')
-    l10 = tk.Label(root, text ='Theo svm')
+        #print('doi do thang')
+    l10 = tk.Label(root, text ='Theo SVM')
     canvas1.create_window(400, 40, window=l10)
     canvas1.create_window(400, 70, window=label1)
 
 
 
-    print('svm')
+    #print('Logistic Regression')
     if ff==100:
         label1 = tk.Label(root, text='Đội xanh thắng')
-        print('doi xanh thang')
+        #print('doi xanh thang')
     else:
         label1 = tk.Label(root, text='Đội   đỏ thắng')
-        print('doi do thang')
-    l11 = tk.Label(root, text ='Theo random forest')
+        #print('doi do thang')
+    l11 = tk.Label(root, text ='Theo Logistic Regression')
     canvas1.create_window(400, 130, window=l11)
     canvas1.create_window(400, 160, window=label1)
     

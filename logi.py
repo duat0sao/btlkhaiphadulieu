@@ -15,6 +15,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from tkinter import messagebox
 from PIL import ImageTk, Image
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn.utils import check_array
 
 
 
@@ -40,15 +43,23 @@ menu2 = menu.loc[:, ['t1Dragons','t2Dragons','t1Rift','t2Rift','topGoldDiff','jg
 x_train,x_test,y_train,y_test=train_test_split(menu2,menu1,test_size=0.20,random_state=130,stratify=menu1)
 
 
-print('SVM')
-model=svm.SVC(probability=True)
+print('LR')
 
-print('Model is training..............')
-model.fit(x_train,y_train)
-print('Done!!!\n')
+x_trainn = x_train.values
+x_testt = x_test.values
+
+model = LogisticRegression()
+
+model = model.fit(x_trainn, y_train)
+
+print('done')
 
 
-y_predsvm=model.predict(x_test)
+
+
+
+
+y_predsvm=model.predict(x_testt)
 
 #print("Kết quả dự đoán :")
 #print(y_pred)
@@ -59,17 +70,19 @@ cxptsvm = accuracy_score(y_predsvm,y_test)*100
 print(f"Độ chính xác: {accuracy_score(y_predsvm,y_test)*100}% ")
 
 
+
+
 #print(gg)
 #print(ff)
 
-l = [[1,0,1,0,4981,3913,131,-83,226]]
-gg = model.predict(l)[0]
-
-print('svm')
-if gg==100:
-    print('doi xanh thang')
-else:
-    print('doi do thang')
+#l = [[1,0,1,0,4981,3913,131,-83,226]]
+#gg = model.predict(l)[0]
+#
+#print('svm')
+#if gg==100:
+#    print('doi xanh thang')
+#else:
+#    print('doi do thang')
 
 
 
@@ -141,7 +154,7 @@ canvas1.create_window(230, 250, window=entry9)
 
 
 
-def dudoansvm ():  
+def dudoan ():  
     if entry1.get() == '':
         x1 = 0
     else:
@@ -182,25 +195,26 @@ def dudoansvm ():
 
 
     l1 = [[x1,x2,x3,x4,x5,x6,x7,x8,x9]]
-    
-    gg = model.predict(l1)[0]
-   
-    #print('svm')
+
+    gg = model.predict(l1)
+    #ff = clf.predict(l1)[0]
+
+    print('Logistic Regression.')
     if gg==100:
         label1 = tk.Label(root, text='Đội xanh thắng')
-        #print('doi xanh thang')
+        print('doi xanh thang')
     else:
         label1 = tk.Label(root, text='Đội   đỏ thắng')
-        #print('doi do thang')
-    l10 = tk.Label(root, text ='Theo svm')
+        print('doi do thang')
+    l10 = tk.Label(root, text ='Theo Logistic Regression.')
     canvas1.create_window(400, 40, window=l10)
     canvas1.create_window(400, 70, window=label1)
 
 
 
-  
     
-button1 = tk.Button(text='Dự đoán team thắng', command=dudoansvm)
+    
+button1 = tk.Button(text='Dự đoán team thắng', command=dudoan)
 canvas1.create_window(200, 290, window=button1)
 
 #button2 = tk.Button(text='Tỷ lệ chính xác', command=tylechinhxac)
@@ -211,3 +225,4 @@ canvas1.create_window(200, 290, window=button1)
 
 
 root.mainloop()
+
