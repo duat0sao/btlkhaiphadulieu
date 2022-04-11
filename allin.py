@@ -67,8 +67,8 @@ y_predrd=clf.predict(x_test)
 #print(np.array(y_test))
 cxptsvm = accuracy_score(y_predsvm,y_test)*100
 cxptrd = accuracy_score(y_predrd,y_test)*100
-print(f"Độ chính xác: {accuracy_score(y_predsvm,y_test)*100}% ")
-print(f"Độ chính xác: {accuracy_score(y_predrd,y_test)*100}% ")
+print(f"Độ chính xác svm: {accuracy_score(y_predsvm,y_test)*100}% ")
+print(f"Độ chính xác rd: {accuracy_score(y_predrd,y_test)*100}% ")
 
 
 
@@ -101,12 +101,12 @@ canvas1.create_window(100, 40, window=l2)
 entry2 = tk.Entry (root) 
 canvas1.create_window(230, 40, window=entry2)
 
-l3 = tk.Label(root, text ='Số lần team xanh afk')
+l3 = tk.Label(root, text ='Số lần team xanh ăn sứ giả')
 canvas1.create_window(100, 70, window=l3)
 entry3 = tk.Entry (root) 
 canvas1.create_window(230, 70, window=entry3)
 
-l4 = tk.Label(root, text ='Số lần team đỏ afk')
+l4 = tk.Label(root, text ='Số lần team đỏ ăn sứ giả')
 canvas1.create_window(100, 100, window=l4)
 entry4 = tk.Entry (root) 
 canvas1.create_window(230, 100, window=entry4)
