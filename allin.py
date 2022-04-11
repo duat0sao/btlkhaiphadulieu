@@ -92,47 +92,47 @@ canvas1.pack()
 
 
 l1 = tk.Label(root, text ='Số rồng team xanh ăn')
-canvas1.create_window(100, 10, window=l1)       #canvas1.create_window(x, y, window=l1)
+canvas1.create_window(80, 10, window=l1)       #canvas1.create_window(x, y, window=l1)
 entry1 = tk.Entry (root) 
 canvas1.create_window(230, 10, window=entry1)
 
 l2 = tk.Label(root, text ='Số rồng team đỏ ăn')
-canvas1.create_window(100, 40, window=l2)
+canvas1.create_window(80, 40, window=l2)
 entry2 = tk.Entry (root) 
 canvas1.create_window(230, 40, window=entry2)
 
 l3 = tk.Label(root, text ='Số lần team xanh ăn sứ giả')
-canvas1.create_window(100, 70, window=l3)
+canvas1.create_window(80, 70, window=l3)
 entry3 = tk.Entry (root) 
 canvas1.create_window(230, 70, window=entry3)
 
 l4 = tk.Label(root, text ='Số lần team đỏ ăn sứ giả')
-canvas1.create_window(100, 100, window=l4)
+canvas1.create_window(80, 100, window=l4)
 entry4 = tk.Entry (root) 
 canvas1.create_window(230, 100, window=entry4)
 
 l5 = tk.Label(root, text ='chênh vàng topland')
-canvas1.create_window(100, 130, window=l5)
+canvas1.create_window(80, 130, window=l5)
 entry5 = tk.Entry (root) 
 canvas1.create_window(230, 130, window=entry5)
 
 l6 = tk.Label(root, text ='chênh vàng jungland')
-canvas1.create_window(100, 160, window=l6)
+canvas1.create_window(80, 160, window=l6)
 entry6 = tk.Entry (root) 
 canvas1.create_window(230, 160, window=entry6)
 
 l7 = tk.Label(root, text ='chênh vàng midland')
-canvas1.create_window(100, 190, window=l7)
+canvas1.create_window(80, 190, window=l7)
 entry7 = tk.Entry (root) 
 canvas1.create_window(230, 190, window=entry7)
 
 l8 = tk.Label(root, text ='chênh vàng adc')
-canvas1.create_window(100, 220, window=l8)
+canvas1.create_window(80, 220, window=l8)
 entry8 = tk.Entry (root) 
 canvas1.create_window(230, 220, window=entry8)
 
 l9 = tk.Label(root, text ='chênh vàng sp')
-canvas1.create_window(100, 250, window=l9)
+canvas1.create_window(80, 250, window=l9)
 entry9 = tk.Entry (root) 
 canvas1.create_window(230, 250, window=entry9)
 

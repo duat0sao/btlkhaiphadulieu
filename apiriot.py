@@ -6,7 +6,7 @@ import pandas as pd
 
 
 #Information for Riot API
-api_key = "RGAPI-ed098da0-5dfa-408a-92b4-0a8fb347d100"
+api_key = "APIriot"
 region = "NA1"
 
 
